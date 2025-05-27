@@ -132,3 +132,10 @@ INSERT INTO
 VALUES ('Derek Fox', 'Coastal Plains');
 
 -- PostgreSQL Problem 2 : Count unique species ever sighted.
+SELECT count(species_id) as unique_species_count
+from species
+where
+    species_id IN (
+        SELECT species_id
+        from sightings
+    );
