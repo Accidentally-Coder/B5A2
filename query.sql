@@ -126,12 +126,12 @@ VALUES (
         NULL
     );
 
--- PostgreSQL Problem 1 : Register a new ranger with provided data with name = 'Derek Fox' and region = 'Coastal Plains'
+-- Problem 1
 INSERT INTO
     rangers (name, region)
 VALUES ('Derek Fox', 'Coastal Plains');
 
--- PostgreSQL Problem 2 : Count unique species ever sighted.
+-- Problem 2
 SELECT count(species_id) as unique_species_count
 from species
 where
@@ -140,10 +140,10 @@ where
         from sightings
     );
 
--- PostgreSQL Problem 3 : Find all sightings where the location includes "Pass"
+-- Problem 3
 SELECT * from sightings WHERE location LIKE '%Pass%';
 
--- PostgreSQL Problem 4 : List each ranger's name and their total number of sightings.
+-- Problem 4
 SELECT r.name as name, count(*) as total_sightings
 from rangers as r
     join sightings as s on r.ranger_id = s.ranger_id
@@ -151,7 +151,7 @@ GROUP BY
     r.ranger_id
 ORDER BY name;
 
--- PostgreSQL Problem 5 : List species that have never been sighted.
+-- Problem 5
 -- solution 1 :
 SELECT common_name
 FROM species
@@ -210,3 +210,14 @@ SELECT
         ELSE 'Evening'
     END as time_of_day
 from sightings;
+
+-- Problem 9
+DELETE from rangers
+WHERE
+    ranger_id IN (
+        SELECT r.ranger_id
+        from rangers as r
+            LEFT JOIN sightings as st on r.ranger_id = st.ranger_id
+        where
+            sighting_id IS NULL
+    );
