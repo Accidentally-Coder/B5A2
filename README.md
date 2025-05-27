@@ -269,6 +269,8 @@ AffectedRows : 1
 
 
 1. What is PostgreSQL?
+   
+   PostgreSQL একটি ওপেন-সোর্স রিলেশনাল ডেটাবেস ম্যানেজমেন্ট সিস্টেম(RDBMS)। এটি ডেটা সংরক্ষণ, ম্যানেজ ও পুনরুদ্ধারের জন্য ব্যবহৃত হয়।
 2. What is the purpose of a database schema in PostgreSQL?
 3. Explain the **Primary Key** and **Foreign Key** concepts in PostgreSQL.
 4. What is the difference between the `VARCHAR` and `CHAR` data types?
@@ -277,12 +279,16 @@ AffectedRows : 1
 
    অন্যদিকে, VARCHAR(n) যদিও সর্বোচ্চ n সংখ্যক character সংরক্ষণ করতে পারে, তবে ডেটা অনু্যায়ী তার যতটুকু দরকার ততটুকুই স্পেস নেয়। কম হলে, অতিরিক্ত whitespace দিয়ে পূর্ণ করে না।
 5. Explain the purpose of the `WHERE` clause in a `SELECT` statement.
+   
     WHERE ক্লজটি নির্দিষ্ট শর্ত অনুযায়ী রেকর্ড ফিল্টার করতে ব্যবহৃত হয়। এটি SELECT, UPDATE, DELETE ইত্যাদি স্টেটমেন্টের সাথে ব্যবহার করা হয়ে থাকে।
 
-    যেমন ঃ
+    যেমন:
+
+    ```
     SELECT name
     FROM students
     WHERE age > 10;
+    ```
 6. What are the `LIMIT` and `OFFSET` clauses used for?
    
    **LIMIT n** ক্যুয়েরি রেজাল্টের শুরু থেকে সর্বোচ্চ n সংখ্যক রেকর্ড দেখায়।
