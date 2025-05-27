@@ -141,4 +141,12 @@ where
     );
 
 -- PostgreSQL Problem 3 : Find all sightings where the location includes "Pass"
-SELECT * from sightings where location LIKE '%Pass%';
+SELECT * from sightings WHERE location LIKE '%Pass%';
+
+-- PostgreSQL Problem 4 : List each ranger's name and their total number of sightings.
+SELECT r.name as name, count(*) as total_sightings
+from rangers as r
+    join sightings as s on r.ranger_id = s.ranger_id
+GROUP BY
+    r.ranger_id
+ORDER BY name;
