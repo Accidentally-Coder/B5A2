@@ -195,4 +195,18 @@ where
         from discovery_date
     ) < 1800;
 
-SELECT * from species;
+-- Problem 8
+SELECT
+    sighting_id,
+    CASE
+        WHEN extract(
+            hour
+            from sighting_time
+        ) < 12 THEN 'Morning'
+        WHEN extract(
+            hour
+            from sighting_time
+        ) between 12 and 17  then 'Afternoon'
+        ELSE 'Evening'
+    END as time_of_day
+from sightings;
