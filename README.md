@@ -278,6 +278,10 @@ AffectedRows : 1
    অন্যদিকে, VARCHAR(n) যদিও সর্বোচ্চ n সংখ্যক character সংরক্ষণ করতে পারে, তবে ডেটা অনু্যায়ী তার যতটুকু দরকার ততটুকুই স্পেস নেয়। কম হলে, অতিরিক্ত whitespace দিয়ে পূর্ণ করে না।
 5. Explain the purpose of the `WHERE` clause in a `SELECT` statement.
 6. What are the `LIMIT` and `OFFSET` clauses used for?
+   
+   **LIMIT n** ক্যুয়েরি রেজাল্টের শুরু থেকে সর্বোচ্চ n সংখ্যক রেকর্ড দেখায়।
+   **OFFSET n** শুরু থেকে n সংখ্যক রেকর্ড বাদ দিয়ে পরবর্তী রেকর্ডগুলো দেখায়।
+    
 7. How can you modify data using `UPDATE` statements?
 8. What is the significance of the `JOIN` operation, and how does it work in PostgreSQL?
 9.  Explain the `GROUP BY` clause and its role in aggregation operations.
