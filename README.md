@@ -110,35 +110,35 @@ This assignment reinforces your understanding of relational databases while enga
 ### **1️⃣ `rangers` Table**
 
 ```markdown
-| ranger_id | name             | region         |
-|-----------|------------------|--------------- |
-| 1         | Alice Green      | Northern Hills |
-| 2         | Bob White        | River Delta    |
-| 3         | Carol King       | Mountain Range |
+| ranger_id | name        | region         |
+| --------- | ----------- | -------------- |
+| 1         | Alice Green | Northern Hills |
+| 2         | Bob White   | River Delta    |
+| 3         | Carol King  | Mountain Range |
 
 ```
 
 ### **2️⃣ `species` Table**
 
 ```markdown
-| species_id | common_name       | scientific_name         | discovery_date | conservation_status |
-|------------|-------------------|-------------------------|----------------|---------------------|
-| 1          | Snow Leopard      | Panthera uncia          | 1775-01-01     | Endangered          |
-| 2          | Bengal Tiger      | Panthera tigris tigris  | 1758-01-01     | Endangered          |
-| 3          | Red Panda         | Ailurus fulgens         | 1825-01-01     | Vulnerable          |
-| 4          | Asiatic Elephant  | Elephas maximus indicus | 1758-01-01     | Endangered          |
+| species_id | common_name      | scientific_name         | discovery_date | conservation_status |
+| ---------- | ---------------- | ----------------------- | -------------- | ------------------- |
+| 1          | Snow Leopard     | Panthera uncia          | 1775-01-01     | Endangered          |
+| 2          | Bengal Tiger     | Panthera tigris tigris  | 1758-01-01     | Endangered          |
+| 3          | Red Panda        | Ailurus fulgens         | 1825-01-01     | Vulnerable          |
+| 4          | Asiatic Elephant | Elephas maximus indicus | 1758-01-01     | Endangered          |
 
 ```
 
 ### **3️⃣ `sightings` Table**
 
 ```markdown
-| sighting_id | species_id | ranger_id | location          | sighting_time        | notes                      |
-|-------------|------------|-----------|-------------------|----------------------|----------------------------|
-| 1           | 1          | 1         | Peak Ridge        | 2024-05-10 07:45:00  | Camera trap image captured |
-| 2           | 2          | 2         | Bankwood Area     | 2024-05-12 16:20:00  | Juvenile seen              |
-| 3           | 3          | 3         | Bamboo Grove East | 2024-05-15 09:10:00  | Feeding observed           |
-| 4           | 1          | 2         | Snowfall Pass     | 2024-05-18 18:30:00  | (NULL)                     |
+| sighting_id | species_id | ranger_id | location          | sighting_time       | notes                      |
+| ----------- | ---------- | --------- | ----------------- | ------------------- | -------------------------- |
+| 1           | 1          | 1         | Peak Ridge        | 2024-05-10 07:45:00 | Camera trap image captured |
+| 2           | 2          | 2         | Bankwood Area     | 2024-05-12 16:20:00 | Juvenile seen              |
+| 3           | 3          | 3         | Bamboo Grove East | 2024-05-15 09:10:00 | Feeding observed           |
+| 4           | 1          | 2         | Snowfall Pass     | 2024-05-18 18:30:00 | (NULL)                     |
 
 ```
 
@@ -161,7 +161,7 @@ AffectedRows : 1
 
 ```markdown
 | unique_species_count |
-| ---------------------|
+| -------------------- |
 | 3                    |
 ```
 
@@ -171,7 +171,7 @@ AffectedRows : 1
 
 ```markdown
 | sighting_id | species_id | ranger_id | location      | sighting_time       | notes  |
-| ------------|------------|-----------|---------------|---------------------|--------|
+| ----------- | ---------- | --------- | ------------- | ------------------- | ------ |
 | 4           | 1          | 2         | Snowfall Pass | 2024-05-18 18:30:00 | (NULL) |
 ```
 
@@ -181,7 +181,7 @@ AffectedRows : 1
 
 ```markdown
 | name        | total_sightings |
-|-------------|-----------------|
+| ----------- | --------------- |
 | Alice Green | 1               |
 | Bob White   | 2               |
 | Carol King  | 1               |
@@ -194,7 +194,7 @@ AffectedRows : 1
 
 ```markdown
 | common_name      |
-|------------------|
+| ---------------- |
 | Asiatic Elephant |
 
 ```
@@ -204,10 +204,10 @@ AffectedRows : 1
 **Sample Output:**
 
 ```markdown
-| common_name   | sighting_time        | name        |
-|---------------|----------------------|-------------|
-| Snow Leopard  | 2024-05-18 18:30:00  | Bob White   |
-| Red Panda     | 2024-05-15 09:10:00  | Carol King  |
+| common_name  | sighting_time       | name       |
+| ------------ | ------------------- | ---------- |
+| Snow Leopard | 2024-05-18 18:30:00 | Bob White  |
+| Red Panda    | 2024-05-15 09:10:00 | Carol King |
 
 ```
 
@@ -230,7 +230,7 @@ AffectedRows : 3
 
 ```markdown
 | sighting_id | time_of_day |
-|-------------|-------------|
+| ----------- | ----------- |
 | 1           | Morning     |
 | 2           | Afternoon   |
 | 3           | Morning     |
@@ -272,11 +272,15 @@ AffectedRows : 1
 2. What is the purpose of a database schema in PostgreSQL?
 3. Explain the **Primary Key** and **Foreign Key** concepts in PostgreSQL.
 4. What is the difference between the `VARCHAR` and `CHAR` data types?
+   
+   CHAR এ আমরা একটা নির্দিষ্ট সংখ্যক character সংরক্ষণ করতে পারি। যদি দেয়া থাকে, CHAR(n), তাহলে সেই ফিল্ডে n সংখ্যক character-ই জমা হবে, এর থেকে কম হলে তা whitespace দিয়ে পূরণ হবে, আর বেশি হলে truncate হয়ে যাবে। এতে করে সব ডেটা একই দৈর্ঘ্যের হয়।
+
+   অন্যদিকে, VARCHAR(n) যদিও সর্বোচ্চ n সংখ্যক character সংরক্ষণ করতে পারে, তবে ডেটা অনু্যায়ী তার যতটুকু দরকার ততটুকুই স্পেস নেয়। কম হলে, অতিরিক্ত whitespace দিয়ে পূর্ণ করে না।
 5. Explain the purpose of the `WHERE` clause in a `SELECT` statement.
 6. What are the `LIMIT` and `OFFSET` clauses used for?
 7. How can you modify data using `UPDATE` statements?
 8. What is the significance of the `JOIN` operation, and how does it work in PostgreSQL?
-9. Explain the `GROUP BY` clause and its role in aggregation operations.
+9.  Explain the `GROUP BY` clause and its role in aggregation operations.
 10. How can you calculate aggregate functions like `COUNT()`, `SUM()`, and `AVG()` in PostgreSQL?
 
 💡 Pro Tip: Don't be short and concise in your answers; explain the idea behind each question and provide in-depth analysis with relevant examples.
@@ -284,10 +288,10 @@ AffectedRows : 1
 
 ## **⏳ Deadline & Marks Distribution**
 
-| Date | Marks | Deadline Time |
-| --- | --- | --- |
-| **26 May, 2025** | **60 Marks** | Until **11:59 PM** |
-| **27 May, 2025** | **50 Marks** | Until **11:59 PM** |
+| Date                   | Marks        | Deadline Time      |
+| ---------------------- | ------------ | ------------------ |
+| **26 May, 2025**       | **60 Marks** | Until **11:59 PM** |
+| **27 May, 2025**       | **50 Marks** | Until **11:59 PM** |
 | **After 27 May, 2025** | **30 Marks** | Until **11:59 PM** |
 
 ---
