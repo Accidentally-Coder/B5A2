@@ -150,3 +150,20 @@ from rangers as r
 GROUP BY
     r.ranger_id
 ORDER BY name;
+
+-- PostgreSQL Problem 5 : List species that have never been sighted.
+-- solution 1 :
+SELECT common_name
+FROM species
+WHERE
+    species_id NOT IN (
+        SELECT species_id
+        FROM sightings
+    );
+
+-- solution 2 (using LEFT JOIN operation) :
+SELECT common_name
+FROM species AS sp
+    LEFT JOIN sightings AS st ON sp.species_id = st.species_id
+WHERE
+    sighting_id IS NULL;
