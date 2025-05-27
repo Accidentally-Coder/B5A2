@@ -273,6 +273,15 @@ AffectedRows : 1
    PostgreSQL একটি ওপেন-সোর্স রিলেশনাল ডেটাবেস ম্যানেজমেন্ট সিস্টেম(RDBMS)। এটি ডেটা সংরক্ষণ, ম্যানেজ ও পুনরুদ্ধারের জন্য ব্যবহৃত হয়।
 2. What is the purpose of a database schema in PostgreSQL?
 3. Explain the **Primary Key** and **Foreign Key** concepts in PostgreSQL.
+
+    Primary Key এর মাধ্যমে একটি টেবিলের প্রতিটি রেকর্ডকে uniquely চিহ্নিত করা যায়।
+    It has the following features:
+    - NOT NULL
+    - Unique
+    - Stable
+    একটি টেবলে শুধুমাত্র একটিমাত্র প্রাইমারি কী থাকবে।
+    
+    Foreign Key এমন একটি কলাম যা অন্য একটি টেবিলের Primary Key এর সাথে সম্পর্ক তৈরি করে।
 4. What is the difference between the `VARCHAR` and `CHAR` data types?
    
    CHAR এ আমরা একটা নির্দিষ্ট সংখ্যক character সংরক্ষণ করতে পারি। যদি দেয়া থাকে, CHAR(n), তাহলে সেই ফিল্ডে n সংখ্যক character-ই জমা হবে, এর থেকে কম হলে তা whitespace দিয়ে পূরণ হবে, আর বেশি হলে truncate হয়ে যাবে। এতে করে সব ডেটা একই দৈর্ঘ্যের হয়।
