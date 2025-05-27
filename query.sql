@@ -184,3 +184,15 @@ FROM (
         ORDER BY sighting_time DESC
         limit 2
     ) as table2 on table1.sighting_time = table2.sighting_time;
+
+-- Problem 7
+UPDATE species
+set
+    conservation_status = 'Historic'
+where
+    EXTRACT(
+        YEAR
+        from discovery_date
+    ) < 1800;
+
+SELECT * from species;
