@@ -87,8 +87,8 @@ VALUES (
 INSERT INTO
     sightings (
         sighting_id,
-        ranger_id,
         species_id,
+        ranger_id,
         location,
         sighting_time,
         notes
@@ -139,3 +139,6 @@ where
         SELECT species_id
         from sightings
     );
+
+-- PostgreSQL Problem 3 : Find all sightings where the location includes "Pass"
+SELECT * from sightings where location LIKE '%Pass%';
