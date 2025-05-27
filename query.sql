@@ -167,3 +167,20 @@ FROM species AS sp
     LEFT JOIN sightings AS st ON sp.species_id = st.species_id
 WHERE
     sighting_id IS NULL;
+
+-- Problem 6
+SELECT table2.common_name, table2.sighting_time, table1.name
+FROM (
+        select name, sighting_time
+        from sightings as st
+            JOIN rangers as r ON st.ranger_id = r.ranger_id
+        order by sighting_time DESC
+        LIMIT 2
+    ) as table1
+    JOIN (
+        SELECT common_name, sighting_time
+        FROM species as sp
+            JOIN sightings as st on sp.species_id = st.species_id
+        ORDER BY sighting_time DESC
+        limit 2
+    ) as table2 on table1.sighting_time = table2.sighting_time;
